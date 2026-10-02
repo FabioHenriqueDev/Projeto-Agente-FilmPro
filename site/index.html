@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Descubra seu próximo filme favorito com recomendações personalizadas por inteligência artificial.">
+  <title>FilmPro — seu próximo filme começa aqui</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-top" aria-hidden="true"></div>
+  <div class="ambient ambient-bottom" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="FilmPro, início">
+      <span class="brand-mark" aria-hidden="true">✳</span><span>film<span class="brand-accent">pro</span></span>
+    </a>
+    <div id="api-status" class="topbar-right api-checking" role="status" aria-live="polite" title="Verificando disponibilidade da API">
+      <span class="status-dot" aria-hidden="true"></span><span id="api-status-label">Verificando API…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="eyebrow"><span class="sparkle">✦</span> CURADORIA INTELIGENTE, DO SEU JEITO</div>
+      <h1 id="hero-title">Uma boa história<br>começa com <span>você.</span></h1>
+      <p class="hero-copy">Conte o que você gosta de assistir. A gente encontra filmes que combinam com o seu momento.</p>
+
+      <form id="recommendation-form" class="prompt-card">
+        <label for="preferences">Que tipo de filme você está procurando?</label>
+        <textarea id="preferences" name="preferences" minlength="10" maxlength="500" rows="2" placeholder="Ex.: Quero um suspense inteligente, com reviravoltas, parecido com Ilha do Medo…" required></textarea>
+        <div class="prompt-footer">
+          <span id="character-count">0 / 500</span>
+          <button id="submit-button" class="submit-button" type="submit">
+            <span id="button-label">Encontrar meus filmes</span><span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </form>
+      <div class="suggestions" aria-label="Sugestões para começar">
+        <span class="suggestion-label">Experimente:</span>
+        <button type="button" class="suggestion" data-prompt="Quero uma ficção científica visualmente incrível e cheia de ideias">Ficção científica</button>
+        <button type="button" class="suggestion" data-prompt="Quero uma comédia leve e inteligente para assistir hoje">Comédia leve</button>
+        <button type="button" class="suggestion" data-prompt="Quero um drama emocionante com personagens inesquecíveis">Drama emocionante</button>
+      </div>
+      <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="results-section" class="results-section" aria-live="polite" hidden>
+      <div class="results-heading">
+        <div><div class="section-kicker">SELECIONADOS PARA VOCÊ</div><h2>Talvez você ame <span>estes.</span></h2></div>
+        <span id="results-count" class="results-count"></span>
+      </div>
+      <div id="movie-grid" class="movie-grid"></div>
+    </section>
+  </main>
+
+  <footer><span class="footer-brand">✳ filmpro</span><span>Feito para a sua próxima noite de cinema.</span></footer>
+</body>
+</html>
